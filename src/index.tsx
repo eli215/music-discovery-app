@@ -4,17 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import ParentSize from '@vx/responsive/lib/components/ParentSize';
-import Example from './Example';
-import './sandbox-styles.css';
-
 ReactDOM.render(
-  <App />,
-  // <React.StrictMode>  {/* StrictMode = a helper component; gives warnings that aid in development. */} 
-  //   <ParentSize>{({ width, height }) => 
-  //     <Example width={width} height={height} />}
-  //   </ParentSize>
-  // </React.StrictMode>,
+  <React.StrictMode>  {/* StrictMode = a helper component; gives warnings that aid in development. */}
+      <App />
+  </React.StrictMode>,
+    // <ParentSize>{({ width, height }) => 
+    //   <Example width={width} height={height} />}
+    // </ParentSize>
   document.getElementById('root')
 );
 
