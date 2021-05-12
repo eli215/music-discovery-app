@@ -5,17 +5,22 @@ import ParentSize from '@vx/responsive/lib/components/ParentSize';
 import Example from './GraphExample';
 import './sandbox-styles.css';
 
-
 function Graphview() {
+
     return (
-        ReactDOM.render(
-            <React.StrictMode>  {/* StrictMode = a helper component; gives warnings that aid in development. */}
-                <ParentSize>{({ width, height }) => 
-                    <Example width={width} height={height} />}
-                </ParentSize>
-            </React.StrictMode>,
-            document.getElementById('root')
-        )
+        <React.StrictMode>  {/* StrictMode = a helper component; gives warnings that aid in development. */}
+            <ParentSize>{({ width, height }) => 
+                    <Example width={width} height={height} />
+            }</ParentSize>
+        </React.StrictMode>
+        // ReactDOM.render(
+        //     <React.StrictMode>  {/* StrictMode = a helper component; gives warnings that aid in development. */}
+        //         <ParentSize>{({ width, height }) => 
+        //             <Example width={width} height={height} />}
+        //         </ParentSize>
+        //     </React.StrictMode>,
+        //     document.getElementById('root')
+        // )
     );
 
 // default code from tutorial:
