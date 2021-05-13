@@ -1,0 +1,22 @@
+/* body {
+    background: #f06d06;
+    font-size: 80%;
+  }
+  
+  div {
+    background: white;
+    width: 240px;
+    margin: 20px;
+  } */
+  
+  .flex-center {
+    background: rgb(255, 255, 255);
+    color: black;
+    border: 10px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+    /* height: 100%; */
+    overflow: auto;
+  }
