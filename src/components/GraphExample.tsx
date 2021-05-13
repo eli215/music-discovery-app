@@ -4,6 +4,7 @@ import { Tree, hierarchy } from '@vx/hierarchy';
 import { HierarchyPointNode } from '@vx/hierarchy/lib/types';
 import { LinkHorizontal } from '@vx/shape';
 import { LinearGradient } from '@vx/gradient';
+import defaultSpotify from './defaultSpotift.png';
 
 const peach = '#fd9b93';
 const pink = '#fe6e9e';
@@ -16,37 +17,44 @@ export const background = '#272b4d';
 
 interface TreeNode {
   name: string;
+  artist: string;
   children?: this[];
 }
 
 type HierarchyNode = HierarchyPointNode<TreeNode>;
 
 const rawTree: TreeNode = {
-  name: 'T',
+  name: 'Save Your Tears\n(with Ariana Grande)(Remix)',
+  artist: '\n-The Weeknd, Ariana Grande',
   children: [
     {
-      name: 'A',
+      name: 'Dead to Me',
+      artist: '\n-Kali Uchis',
       children: [
-        { name: 'A1' },
-        { name: 'A2' },
-        { name: 'A3' },
+
+        { name: 'MONTERO (Call Me By Your Name', 
+        artist: '\n-Lil Nas X',},
+        
+        
         {
-          name: 'C',
+          name: 'Wait A Minute!',
+          artist: '\n-WILLOW',
           children: [
             {
-              name: 'C1',
+              name: 'Imagination',
+              artist: '\n-Foster The People',
             },
             {
-              name: 'D',
+              name: 'Woman On The Moon (feat. UPSAHL)',
+              artist: '\n-Yung Bae',
               children: [
                 {
-                  name: 'D1',
+                  name: 'Problems',
+                  artist: '\n-Hey Violet',
                 },
                 {
-                  name: 'D2',
-                },
-                {
-                  name: 'D3',
+                  name: 'Icy',
+                  artist: '\n-Pink Sweat$',
                 },
               ],
             },
@@ -54,18 +62,18 @@ const rawTree: TreeNode = {
         },
       ],
     },
-    { name: 'Z' },
+      
     {
-      name: 'B',
-      children: [{ name: 'B1' }, { name: 'B2' }, { name: 'B3' }],
+      name: 'Easy (With Kacey Musgraves feat. Mark Ronson)', artist: '\n-Troye Sivan',
+      children: [{ name: 'Dandelion', artist: '\n-Galantis, JVKE'}, { name: 'Musician', artist: '\n-Porter Robinson',}],
     },
   ],
 };
 
 /** Handles rendering Root, Parent, and other Nodes. */
 function Node({ node }: { node: HierarchyNode }) {
-  const width = 40;
-  const height = 20;
+  const width = 128;
+  const height = 128;
   const centerX = -width / 2;
   const centerY = -height / 2;
   const isRoot = node.depth === 0;
@@ -91,9 +99,18 @@ function Node({ node }: { node: HierarchyNode }) {
           alert(`clicked: ${JSON.stringify(node.data.name)}`);
         }}
       />
+      <div>
+        <image
+          height={128}
+          width={128}
+          y={node.y}
+          x={node.x}
+          
+        />
+      </div>
       <text
         dy=".33em"
-        fontSize={9}
+        fontSize={12}
         fontFamily="Arial"
         textAnchor="middle"
         fill={green}
@@ -101,31 +118,55 @@ function Node({ node }: { node: HierarchyNode }) {
       >
         {node.data.name}
       </text>
+      <text
+        dy="20"
+        fontSize={12}
+        fontFamily="Arial"
+        textAnchor="middle"
+        fill={green}
+        style={{ pointerEvents: 'none' }}
+      >
+        {node.data.artist}
+      </text>
     </Group>
   );
 }
 
 function RootNode({ node }: { node: HierarchyNode }) {
   return (
-    <Group top={node.x} left={node.y}>
-      <circle r={12} fill="url('#lg')" />
+    <Group top={node.x} left={node.y+114}>
+      <circle r={114} fill="url('#lg')" />
       <text
         dy=".33em"
-        fontSize={9}
+        fontSize={20}
         fontFamily="Arial"
         textAnchor="middle"
         style={{ pointerEvents: 'none' }}
         fill={plum}
+        text-overflow={'ellipsis'}
+        lengthAdjust={10}
       >
         {node.data.name}
+      </text>
+      <text
+        dy="30"
+        fontSize={20}
+        fontFamily="Arial"
+        textAnchor="middle"
+        style={{ pointerEvents: 'none' }}
+        fill={plum}
+        text-overflow={'ellipsis'}
+        lengthAdjust={10}
+      >
+        {node.data.artist}
       </text>
     </Group>
   );
 }
 
 function ParentNode({ node }: { node: HierarchyNode }) {
-  const width = 40;
-  const height = 20;
+  const width = 128;
+  const height = 128;
   const centerX = -width / 2;
   const centerY = -height / 2;
 
@@ -145,13 +186,23 @@ function ParentNode({ node }: { node: HierarchyNode }) {
       />
       <text
         dy=".33em"
-        fontSize={9}
+        fontSize={12}
         fontFamily="Arial"
         textAnchor="middle"
-        style={{ pointerEvents: 'none' }}
+        style={{ pointerEvents: 'none'}}
         fill={white}
       >
         {node.data.name}
+      </text>
+      <text
+        dy="20"
+        fontSize={12}
+        fontFamily="Arial"
+        textAnchor="middle"
+        style={{ pointerEvents: 'none'}}
+        fill={white}
+      >
+        {node.data.artist}
       </text>
     </Group>
   );

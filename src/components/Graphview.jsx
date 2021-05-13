@@ -10,7 +10,7 @@ function Graphview() {
     return (
         <React.StrictMode>  {/* StrictMode = a helper component; gives warnings that aid in development. */}
             <ParentSize>{({ width, height }) => 
-                    <Example width={width} height={height} />
+                    <Example width={width} height={780} />
             }</ParentSize>
         </React.StrictMode>
         // ReactDOM.render(
