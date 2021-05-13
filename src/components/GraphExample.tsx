@@ -18,43 +18,52 @@ export const background = '#272b4d';
 interface TreeNode {
   name: string;
   artist: string;
+  tags: string;
   children?: this[];
 }
 
 type HierarchyNode = HierarchyPointNode<TreeNode>;
 
 const rawTree: TreeNode = {
-  name: 'Save Your Tears\n(with Ariana Grande)(Remix)',
-  artist: '\n-The Weeknd, Ariana Grande',
+  name: 'Save Your Tears (with Ariana Grande) (Remix)',
+  artist: '-The Weeknd, Ariana Grande',
+  tags: 'pop, electronic, soul, r&b, dance pop',
   children: [
     {
       name: 'Dead to Me',
-      artist: '\n-Kali Uchis',
+      artist: '-Kali Uchis',
+      tags: 'pop, colombian, lush, alternative r&b, indie pop',
       children: [
 
         { name: 'MONTERO (Call Me By Your Name', 
-        artist: '\n-Lil Nas X',},
+        artist: '-Lil Nas X',
+        tags: 'pop rap, country rap, r&b',},
         
         
         {
           name: 'Wait A Minute!',
-          artist: '\n-WILLOW',
+          artist: '-WILLOW',
+          tags: 'r&b, pop, alternative, electropop',
           children: [
             {
               name: 'Imagination',
-              artist: '\n-Foster The People',
+              artist: '-Foster The People',
+              tags: 'modern rock, pop, rock, indie, vocals',
             },
             {
               name: 'Woman On The Moon (feat. UPSAHL)',
-              artist: '\n-Yung Bae',
+              artist: '-Yung Bae',
+              tags: 'future funk, electropop, indie, modern, dance',
               children: [
                 {
                   name: 'Problems',
-                  artist: '\n-Hey Violet',
+                  artist: '-Hey Violet',
+                  tags: 'electropop, indie, pop, dance pop, alternative',
                 },
                 {
                   name: 'Icy',
-                  artist: '\n-Pink Sweat$',
+                  artist: '-Pink Sweat$',
+                  tags: 'bedroom soul, pop',
                 },
               ],
             },
@@ -64,8 +73,9 @@ const rawTree: TreeNode = {
     },
       
     {
-      name: 'Easy (With Kacey Musgraves feat. Mark Ronson)', artist: '\n-Troye Sivan',
-      children: [{ name: 'Dandelion', artist: '\n-Galantis, JVKE'}, { name: 'Musician', artist: '\n-Porter Robinson',}],
+      name: 'Easy (With Kacey Musgraves feat. Mark Ronson)', artist: '-Troye Sivan', tags: 'pop, dance pop, electropop',
+      children: [{ name: 'Dandelion', artist: '-Galantis, JVKE', tags: 'dance pop, edm, electro house, pop, dance pop',}, 
+      { name: 'Musician', artist: '-Porter Robinson', tags: 'electropop, dance pop, breakbeat, synthpop, indie, edm',}],
     },
   ],
 };
@@ -96,7 +106,7 @@ function Node({ node }: { node: HierarchyNode }) {
         strokeOpacity={0.6}
         rx={10}
         onClick={() => {
-          alert(`clicked: ${JSON.stringify(node.data.name)}`);
+          alert(`Song: ${JSON.stringify(node.data.name + node.data.artist)}\nTags: ${JSON.stringify(node.data.tags)}`);
         }}
       />
       <div>
@@ -135,7 +145,11 @@ function Node({ node }: { node: HierarchyNode }) {
 function RootNode({ node }: { node: HierarchyNode }) {
   return (
     <Group top={node.x} left={node.y+114}>
-      <circle r={114} fill="url('#lg')" />
+      <circle r={114} fill="url('#lg')" 
+      onClick={() => {
+        alert(`Song: ${JSON.stringify(node.data.name + node.data.artist)}\nTags: ${JSON.stringify(node.data.tags)}`
+        );
+      }}/>
       <text
         dy=".33em"
         fontSize={20}
@@ -181,7 +195,8 @@ function ParentNode({ node }: { node: HierarchyNode }) {
         stroke={blue}
         strokeWidth={1}
         onClick={() => {
-          alert(`clicked: ${JSON.stringify(node.data.name)}`);
+          alert(`Song: ${JSON.stringify(node.data.name + node.data.artist)}\nTags: ${JSON.stringify(node.data.tags)}`
+          );
         }}
       />
       <text
