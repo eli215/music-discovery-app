@@ -1,0 +1,50 @@
+/* Wrap document in a flex container. */
+.wrapper {
+    display: flex;  
+    flex-flow: row wrap;
+}
+
+/* Targets direct children of .wrapper */
+.wrapper > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
+/* Section flex container */
+.section {
+    color: white;
+    display: flex;
+}
+
+/* Section subclasses */
+.section .lt-img {
+    display: flex;
+}
+
+/* Section image */
+.section .img {
+    outline: 1px solid black;
+  }
+
+.section .content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+  /* outline: 1px solid black; */
+}
+
+.section .title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    /* background-color: rgb(137, 192, 255); */
+    text-align: left;
+    padding: 5px 8px;
+    /* outline: 1px solid black; */
+  }
+
+  /* Section description */
+.section .descr {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    font-style: italic;
+    padding: 5px 8px;
+}
