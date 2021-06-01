@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Group } from '@vx/group';
 import { Tree, hierarchy } from '@vx/hierarchy';
 import { HierarchyPointNode } from '@vx/hierarchy/lib/types';
 import { LinkHorizontal } from '@vx/shape';
 import { LinearGradient } from '@vx/gradient';
 import defaultSpotify from './defaultSpotift.png';
+import {Modal, Button} from 'react-bootstrap';
 
 const peach = '#fd9b93';
 const pink = '#fe6e9e';
@@ -22,6 +23,39 @@ interface TreeNode {
   children?: this[];
 }
 
+//READ ME: for some reason useState is not being recognized as a hook, which is weird because its so universal
+
+// function infoModal({node}: { node: TreeNode }) {
+//   const [show, setShow] = useState(false);
+
+//   const handleClose = () => setShow(false);
+//   const handleShow = () => setShow(true);
+
+//   return (
+//     <>
+//       <Button variant="primary" onClick={handleShow}>
+//         Launch demo modal
+//       </Button>
+
+//       <Modal show={show} onHide={handleClose}>
+//         <Modal.Header closeButton>
+//           <Modal.Title>Modal heading</Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+//         <Modal.Footer>
+//           <Button variant="secondary" onClick={handleClose}>
+//             Close
+//           </Button>
+//           <Button variant="primary" onClick={handleClose}>
+//             Save Changes
+//           </Button>
+//         </Modal.Footer>
+//       </Modal>
+//     </>
+//   );
+// }
+
+
 type HierarchyNode = HierarchyPointNode<TreeNode>;
 
 const rawTree: TreeNode = {
@@ -35,11 +69,11 @@ const rawTree: TreeNode = {
       tags: 'pop, colombian, lush, alternative r&b, indie pop',
       children: [
 
-        { name: 'MONTERO (Call Me By Your Name', 
-        artist: '-Lil Nas X',
-        tags: 'pop rap, country rap, r&b',},
-        
-        
+        {
+          name: 'MONTERO (Call Me By Your Name',
+          artist: '-Lil Nas X',
+          tags: 'pop rap, country rap, r&b',
+        },
         {
           name: 'Wait A Minute!',
           artist: '-WILLOW',
@@ -71,11 +105,22 @@ const rawTree: TreeNode = {
         },
       ],
     },
-      
+
     {
-      name: 'Easy (With Kacey Musgraves feat. Mark Ronson)', artist: '-Troye Sivan', tags: 'pop, dance pop, electropop',
-      children: [{ name: 'Dandelion', artist: '-Galantis, JVKE', tags: 'dance pop, edm, electro house, pop, dance pop',}, 
-      { name: 'Musician', artist: '-Porter Robinson', tags: 'electropop, dance pop, breakbeat, synthpop, indie, edm',}],
+      name: 'Easy (With Kacey Musgraves feat. Mark Ronson)',
+      artist: '-Troye Sivan',
+      tags: 'pop, dance pop, electropop',
+      children: [
+        {
+          name: 'Dandelion',
+          artist: '-Galantis, JVKE',
+          tags: 'dance pop, edm, electro house, pop, dance pop',
+        },
+        {
+          name: 'Musician',
+          artist: '-Porter Robinson',
+          tags: 'electropop, dance pop, breakbeat, synthpop, indie, edm',
+        }],
     },
   ],
 };
@@ -115,7 +160,7 @@ function Node({ node }: { node: HierarchyNode }) {
           width={128}
           y={node.y}
           x={node.x}
-          
+
         />
       </div>
       <text
@@ -144,12 +189,12 @@ function Node({ node }: { node: HierarchyNode }) {
 
 function RootNode({ node }: { node: HierarchyNode }) {
   return (
-    <Group top={node.x} left={node.y+114}>
-      <circle r={114} fill="url('#lg')" 
-      onClick={() => {
-        alert(`Song: ${JSON.stringify(node.data.name + node.data.artist)}\nTags: ${JSON.stringify(node.data.tags)}`
-        );
-      }}/>
+    <Group top={node.x} left={node.y + 114}>
+      <circle r={114} fill="url('#lg')"
+        onClick={() => {
+          alert(`Song: ${JSON.stringify(node.data.name + node.data.artist)}\nTags: ${JSON.stringify(node.data.tags)}`
+          );
+        }} />
       <text
         dy=".33em"
         fontSize={20}
@@ -204,7 +249,7 @@ function ParentNode({ node }: { node: HierarchyNode }) {
         fontSize={12}
         fontFamily="Arial"
         textAnchor="middle"
-        style={{ pointerEvents: 'none'}}
+        style={{ pointerEvents: 'none' }}
         fill={white}
       >
         {node.data.name}
@@ -214,7 +259,7 @@ function ParentNode({ node }: { node: HierarchyNode }) {
         fontSize={12}
         fontFamily="Arial"
         textAnchor="middle"
-        style={{ pointerEvents: 'none'}}
+        style={{ pointerEvents: 'none' }}
         fill={white}
       >
         {node.data.artist}
