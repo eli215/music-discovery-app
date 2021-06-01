@@ -1,5 +1,41 @@
 import React from "react";
 
+import songSelection from "./database"
+
+const tableStyle = {
+  border: '1px solid black',
+  borderCollapse: 'collapse',
+  textAlign: 'center',
+  width: '100%'
+}
+const tdStyle = {
+  border: '1px solid #85C1E9',
+  background: 'white',
+  padding: '5px'
+};
+const thStyle = {
+  border: '1px solid #3498DB',
+  background: '#3498DB',
+  colro: 'white',
+  padding: '5px'
+};
+
+const App = () => {
+  const Songs = songSelection()
+  return (
+    <div>
+      <table style={tableStyle}>
+        <tbody>
+          <tr>
+            <th style={thStyle}>name</th>
+            <th style={thStyle}>artist</th>
+            <th style={thStyle}>tags</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  )
+}
 function Listview() {
   return (
     <div className="listview">
@@ -13,13 +49,7 @@ function Listview() {
             />
           </div>
           <div class="col-lg-5">
-            <h1 class="font-weight-light">Listview</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </p>
+
           </div>
         </div>
       </div>
