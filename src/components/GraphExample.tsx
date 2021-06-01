@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Group } from '@vx/group';
 import { Tree, hierarchy } from '@vx/hierarchy';
 import { HierarchyPointNode } from '@vx/hierarchy/lib/types';
 import { LinkHorizontal } from '@vx/shape';
 import { LinearGradient } from '@vx/gradient';
-import defaultSpotify from './defaultSpotift.png';
-import {Modal, Button} from 'react-bootstrap';
+import defaultSpotify from './defaultSpotify.png';
+import { Modal, Button } from 'react-bootstrap';
 import songSelection from './database';
 
 const peach = '#fd9b93';
@@ -26,7 +26,7 @@ interface TreeNode {
 
 //READ ME: for some reason useState is not being recognized as a hook, which is weird because its so universal
 
-// function infoModal({node}: { node: TreeNode }) {
+// function infoModal(name: string, artist: string, tags: string) {
 //   const [show, setShow] = useState(false);
 
 //   const handleClose = () => setShow(false);
@@ -60,45 +60,45 @@ interface TreeNode {
 type HierarchyNode = HierarchyPointNode<TreeNode>;
 
 const rawTree: TreeNode = {
-  name: 'Save Your Tears (with Ariana Grande) (Remix)',
-  artist: '-The Weeknd, Ariana Grande',
-  tags: 'pop, electronic, soul, r&b, dance pop',
+  name: songSelection()[0].name,
+  artist: songSelection()[0].artist,
+  tags: songSelection()[0].tags,
   children: [
     {
-      name: 'Dead to Me',
-      artist: '-Kali Uchis',
-      tags: 'pop, colombian, lush, alternative r&b, indie pop',
+      name: songSelection()[1].name,
+      artist: songSelection()[1].artist,
+      tags: songSelection()[1].tags,
       children: [
 
         {
-          name: 'MONTERO (Call Me By Your Name',
-          artist: '-Lil Nas X',
-          tags: 'pop rap, country rap, r&b',
+          name: songSelection()[2].name,
+          artist: songSelection()[2].artist,
+          tags: songSelection()[2].tags,
         },
         {
-          name: 'Wait A Minute!',
-          artist: '-WILLOW',
-          tags: 'r&b, pop, alternative, electropop',
+          name: songSelection()[3].name,
+          artist: songSelection()[3].artist,
+          tags: songSelection()[3].tags,
           children: [
             {
-              name: 'Imagination',
-              artist: '-Foster The People',
-              tags: 'modern rock, pop, rock, indie, vocals',
+              name: songSelection()[4].name,
+              artist: songSelection()[4].artist,
+              tags: songSelection()[4].tags,
             },
             {
-              name: 'Woman On The Moon (feat. UPSAHL)',
-              artist: '-Yung Bae',
-              tags: 'future funk, electropop, indie, modern, dance',
+              name: songSelection()[5].name,
+              artist: songSelection()[5].artist,
+              tags: songSelection()[5].tags,
               children: [
                 {
-                  name: 'Problems',
-                  artist: '-Hey Violet',
-                  tags: 'electropop, indie, pop, dance pop, alternative',
+                  name: songSelection()[6].name,
+                  artist: songSelection()[6].artist,
+                  tags: songSelection()[6].tags,
                 },
                 {
-                  name: 'Icy',
-                  artist: '-Pink Sweat$',
-                  tags: 'bedroom soul, pop',
+                  name: songSelection()[7].name,
+                  artist: songSelection()[7].artist,
+                  tags: songSelection()[7].tags,
                 },
               ],
             },
@@ -108,19 +108,19 @@ const rawTree: TreeNode = {
     },
 
     {
-      name: 'Easy (With Kacey Musgraves feat. Mark Ronson)',
-      artist: '-Troye Sivan',
-      tags: 'pop, dance pop, electropop',
+      name: songSelection()[8].name,
+      artist: songSelection()[8].artist,
+      tags: songSelection()[8].tags,
       children: [
         {
-          name: 'Dandelion',
-          artist: '-Galantis, JVKE',
-          tags: 'dance pop, edm, electro house, pop, dance pop',
+          name: songSelection()[9].name,
+          artist: songSelection()[9].artist,
+          tags: songSelection()[9].tags,
         },
         {
-          name: 'Musician',
-          artist: '-Porter Robinson',
-          tags: 'electropop, dance pop, breakbeat, synthpop, indie, edm',
+          name: songSelection()[10].name,
+          artist: songSelection()[10].artist,
+          tags: songSelection()[10].tags,
         }],
     },
   ],
@@ -152,6 +152,7 @@ function Node({ node }: { node: HierarchyNode }) {
         strokeOpacity={0.6}
         rx={10}
         onClick={() => {
+          //infoModal(node.data.name, node.data.artist, node.data.tags);
           alert(`Song: ${JSON.stringify(node.data.name + node.data.artist)}\nTags: ${JSON.stringify(node.data.tags)}`);
         }}
       />

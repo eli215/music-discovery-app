@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.8.4",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -23,6 +25,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-scripts-ts": "^2.13.0",
+    "react-window": "^1.8.6",
     "typescript": "^4.2.4",
     "web-vitals": "^1.1.2"
   },
