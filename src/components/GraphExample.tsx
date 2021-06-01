@@ -6,6 +6,7 @@ import { LinkHorizontal } from '@vx/shape';
 import { LinearGradient } from '@vx/gradient';
 import defaultSpotify from './defaultSpotift.png';
 import {Modal, Button} from 'react-bootstrap';
+import songSelection from './database';
 
 const peach = '#fd9b93';
 const pink = '#fe6e9e';

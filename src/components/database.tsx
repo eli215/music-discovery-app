@@ -148,3 +148,8 @@ let songSelection = [
         tags:'alternative, soul, anthem, power pop, gospel, emo, modern rock, baroque pop, male vocals',
     },
 ];
+
+//gets the song selection, allows you to use it outside of this document
+export default function getSongSelection() {
+    return songSelection;
+}
