@@ -9,7 +9,7 @@
     margin: 20px;
   } */
   
-  .flex-center {
+  /* .flex-center {
     background: rgb(255, 255, 255);
     color: black;
     border: 10px solid white;
@@ -17,14 +17,14 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 100px;
-    /* height: 100%; */
+    height: 100%;
     overflow: auto;
-  }
+  } */
 
   .center {
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
