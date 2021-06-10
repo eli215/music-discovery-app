@@ -1,7 +1,10 @@
 import React from "react";
+import songSelection from './database';
 import "./Footer.css"
 
+
 function Footer() {
+
   return (
     <div className="footer">
       <footer class="py-2 bg-dark fixed-bottom">
@@ -16,6 +19,9 @@ function Footer() {
                 </div>
                 <div class="section descr">
                   Foster the People
+                </div>
+                <div class="section tags">
+                  Tags: modern rock, pop, rock, indie, tenor/bass vocals
                 </div>
               </div>
           </div>

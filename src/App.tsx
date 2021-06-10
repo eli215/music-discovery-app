@@ -15,7 +15,7 @@ function App() {
           <Route path="/listview" exact component={() => <Listview />} />
           <Route path="/graphview" exact component={() => <Graphview />} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
 
       {/* <header className="App-header">

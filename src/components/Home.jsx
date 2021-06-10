@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import { Link } from "react-router-dom";
-import { Input, Button, Icon } from 'semantic-ui-react'
+import { Link, Route, Redirect } from "react-router-dom";
+import { Input, Button, Icon, Form } from 'semantic-ui-react'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import "./Home.css"
 
@@ -22,31 +22,38 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+
 function Home() {
   const classes = useStyles();
-  
   render();
+
   return (
-    // ?? style necessary for bg color
-    <div>
-      <Form />
+    <div style={{color: '#49bfff', padding: 80, fontFamily: 'Trebuchet MS'}}>
+      <h1>I'm looking for something that sounds like...</h1>
+    <div className="center">
+      
+    <Input size='huge' action={
+      <Button icon size='huge' as={Link} to="/listview?s=Lost+In+Your+Light+by+Dua+Lipa">
+        <Icon name='search'/>
+      </Button>
+    }
+    placeholder='Enter a song/artist' />
+    </div>
     </div>
   );
-}
 
-class Form extends React.Component {
-	render() {
-  	return (
-      <div className="center">
-      <Input size='huge' action={
-        <Button icon size='huge' as={Link} to="/listview">
-          <Icon name='search'/>
-        </Button>
-      }
-      placeholder='Enter a song/artist...' />
-      </div>
-    );
-  }
+  // return (
+  //   <div>
+  //     <Form className="center" afterSubmit={() => toDashboard(true)}>
+  //       <Input size='huge' action={
+  //         <Button icon type="submit" size='huge' >
+  //           <Icon name='search'/>
+  //         </Button>
+  //       }
+  //       placeholder='Enter a song/artist...' />
+  //     </Form>
+  //   </div>
+  // );
 }
 
 export default Home;

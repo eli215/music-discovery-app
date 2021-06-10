@@ -11,6 +11,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import SpotifyImage from './Images/defaultSpotify.png';
 import albumCover from './Images/lostInYourLight.jpg';
 
+import Footer from "./Footer"
+import { render } from '@testing-library/react';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -48,6 +51,7 @@ const HtmlTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
+
 function renderRow(props) {
   const { index, style } = props;
 
@@ -57,7 +61,10 @@ function renderRow(props) {
         <Typography color="inherit" style={{fontSize: 18}}><b>Tags</b></Typography>
           {songSelection()[index].tags}
       </React.Fragment>}>
-      <ListItem button style={style} key={index} divider={true}>
+      <ListItem button style={style} key={index} divider={true} 
+      // onClick={
+      // }
+      >
 
         <ListItemIcon>
           <DiscIcon style={{ color: '#26deb0' }} />
@@ -65,14 +72,11 @@ function renderRow(props) {
         <ListItemText
           style={{ color: 'white' }}
           primary={songSelection()[index].name}
-          secondary={<Typography color='#00aaff'> {songSelection()[index].artist} </Typography>} />
+          secondary={<Typography color='#00aaff'>by {songSelection()[index].artist} </Typography>} />
       </ListItem>
+      
     </HtmlTooltip>
-
-
-
-
-
+    
   );
 }
 
@@ -81,24 +85,26 @@ renderRow.propTypes = {
   style: PropTypes.object.isRequired,
 };
 
+
 export default function VirtualizedList() {
   const classes = useStyles();
 
   return (
     <div class='row'>
-      <div className={classes.custCol} style={{ padding: 50 }}>
-        <img src={albumCover} alt="Song" width="500" height="500" />
-        <h1 style={{ color: '#26deb0', padding: 10 }}>{songSelection()[14].name}</h1>
-        <p style={{ color: 'white' }}>{songSelection()[14].artist}</p>
-        <p style={{ color: 'white' }}>Tags: {songSelection()[14].tags}</p>
+      <div className={classes.custCol} style={{ padding: 15, margin: 0}}>
+        <img src={albumCover} alt="Song" width="315" height="315" />
+        <h1 style={{ color: '#26deb0', padding: 0 }}>{songSelection()[19].name}</h1>
+        <p style={{ color: 'white', padding: 0  }}>by {songSelection()[19].artist}</p>
+        <p style={{ color: 'white', padding: 0  }}>Tags: {songSelection()[19].tags.substring(0, 54)}</p>
+        <p style={{ color: 'white', padding: 0  }}>{songSelection()[19].tags.substring(54)}</p>
 
       </div>
       <div className={classes.custCol}>
-        <FixedSizeList height={760} width={'98.5%'} itemSize={70} itemCount={20}>
+        <FixedSizeList height={510} width={'98.5%'} itemSize={70} itemCount={19}>
           {renderRow}
         </FixedSizeList>
+        <Footer/>
       </div>
-
     </div>
 
   );
